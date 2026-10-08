@@ -1,7 +1,7 @@
 class ChatMessage {
   final String id;
   final String text;
-  final String sender; // 'user' hoặc 'ai'
+  final String sender;
 
   ChatMessage({
     required this.id,
@@ -9,7 +9,6 @@ class ChatMessage {
     required this.sender,
   });
 
-  // Chuyển đổi từ JSON sang Object an toàn
   factory ChatMessage.fromJson(Map<String, dynamic> json) {
     return ChatMessage(
       id: json['id']?.toString() ?? '',
@@ -18,7 +17,6 @@ class ChatMessage {
     );
   }
 
-  // Chuyển đổi từ Object sang JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,

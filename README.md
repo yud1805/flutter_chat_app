@@ -1,4 +1,6 @@
 # TÀI LIỆU HƯỚNG DẪN - DỰ ÁN FLUTTER CHATBOT AI
+> **Lưu ý dành cho sinh viên thực hành:**
+> Vui lòng xem chi tiết yêu cầu, mục tiêu và hướng dẫn của bài Lab tại file [LAB_INSTRUCTIONS.md](LAB_INSTRUCTIONS.md).
 
 ## 1. Giới thiệu chung
 Đây là ứng dụng Chatbot AI được phát triển bằng nền tảng **Flutter**, tích hợp toàn diện kiến thức từ **Module 8 (RESTful APIs & JSON)** và **Module 10 (Giao diện & Logic hoàn chỉnh)**. 
@@ -55,7 +57,7 @@ Sau đó bấm nút **Pub get** (hoặc chạy lệnh `flutter pub get` trong Te
 **Bước 2: Thay đổi API Key (Nếu cần)**
 * Mở file `lib/services/ai_service.dart`.
 * Tìm biến `_apiKey` và thay bằng mã API Key Groq của bạn nếu muốn sử dụng tài khoản khác.
-* *Lưu ý:* Hệ thống đang dùng model `openai/gpt-oss-20b`.
+* Đường link để lấy API Key Groq: https://console.groq.com/keys 
 
 **Bước 3: Chạy ứng dụng**
 * Khuyên dùng chạy trên **Windows (desktop)** hoặc **Máy ảo Android** để tránh lỗi chặn mạng CORS của trình duyệt Web.
