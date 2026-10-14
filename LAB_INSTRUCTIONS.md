@@ -36,12 +36,21 @@ Sau bài Lab này, sinh viên có thể:
     - Lỗi mạng: Dùng `try-catch` bắt ngoại lệ, hiển thị thông báo thay vì để crash ứng dụng.
 5. *Lưu ý bảo mật:* Tuyệt đối không commit/push mã API Key bí mật lên GitHub.
 
-### 🔴 Question 3 — Nâng cao: Multi-turn Context hoặc Streaming Response
-**Mục đích:** Nâng tầm chatbot thành trợ lý thông minh. Sinh viên chọn 1 trong 2 hướng. *(Yêu cầu chung: Thiết lập System Message và bắt lỗi 429/503).*
+### 🔴 Question 3 — Nâng cao: Trợ lý Hướng Dẫn Viên Du Lịch & Ngữ Cảnh Hội Thoại
+**Mục đích:** Nâng cấp Chatbot thành một **Trợ lý ảo Hướng dẫn viên Du lịch chuyên nghiệp**, biết kiểm soát chủ đề thông minh, duy trì cuộc trò chuyện liên tục và xử lý ngoại lệ mạng an toàn.
+---
+#### 📌 Yêu cầu chung:
+1. **Thiết lập System Message — Khống chế phạm vi chủ đề Du lịch (Guardrails):**
+   - Cấu hình vai trò gốc của AI trong mảng `messages` với `role: "system"`.
+   - **Phạm vi được phép:** Tư vấn địa điểm tham quan, gợi ý lịch trình, ẩm thực địa phương, phương tiện di chuyển, văn hóa và kinh nghiệm du lịch.
+   - **Quy tắc khống chế nghiêm ngặt:** Nếu người dùng hỏi các chủ đề **ngoài du lịch** (ví dụ: *viết code lập trình, giải bài tập toán, bàn luận thời sự, bóng đá, thơ ca tình cảm...*), AI **BẮT BUỘC PHẢI TỪ CHỐI** một cách lịch sự và hướng dẫn người dùng quay lại chủ đề du lịch.
 
-* **Hướng A — Duy trì ngữ cảnh hội thoại (Multi-turn Context):** Tầng Service phải chuyển đổi toàn bộ danh sách `List<ChatMessage>` thành mảng `messages` chuẩn JSON gửi lên server. Kết quả là AI trả lời đúng câu hỏi dựa vào bối cảnh tin nhắn cũ.
-* **Hướng B — Phản hồi dòng thời gian thực (Streaming Response):** Bật cờ `"stream": true`. Lắng nghe luồng dữ liệu (SSE) và cập nhật liên tục vào tin nhắn cuối cùng để chữ xuất hiện mượt mà theo thời gian thực.
-
+2. **Kiểm soát mã lỗi nâng cao (Error Handling):**
+   - Không để app bị treo/crash khi gặp sự cố máy chủ.
+   - Bắt và hiển thị thông báo tường minh bằng tiếng Việt cho mã lỗi:
+      - **HTTP 429**: Quá giới hạn lượt gọi trong phút (Rate Limit/Quota exceeded).
+      - **HTTP 503**: Máy chủ AI quá tải hoặc đang bảo trì.
+     
 ---
 
 ## 📚 Thuật Ngữ Cần Biết
@@ -58,3 +67,11 @@ Sau bài Lab này, sinh viên có thể:
 2. **Minh chứng chạy:** Ảnh/Video demo DartPad, gọi API thật, nhớ ngữ cảnh hoặc streaming.
 3. **Tài liệu README:** Hướng dẫn điền API Key và cách chạy.
 4. **Vấn đáp:** Giải thích đường đi của gói tin: từ lúc ấn nút ➔ Headers/Body ➔ HTTP Status ➔ Parsing JSON ➔ Cập nhật UI.
+
+---
+
+#### ✅ Tiêu chí nghiệm thu cho chấm bài:
+1. **Test đúng chủ đề:** Đặt câu hỏi thuộc lĩnh vực đã chọn -> AI trả lời chính xác, hữu ích.
+2. **Test bẫy lạc đề (Quan trọng):** Hỏi câu ngoài chủ đề (ví dụ: *"Hôm nay ăn gì?", "Làm thơ tặng bạn"*...) -> AI phải từ chối lịch sự, không được trả lời nội dung lạc đề.
+
+---
